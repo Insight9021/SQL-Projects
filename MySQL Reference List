@@ -1,0 +1,16 @@
+HOW TO LOAD DATA LOCAL INFILE IN MySQL
+
+Loading Data local infile simply means that you are loading a file from your computer into the SQL Workbench. Loading data local infile is done because MySQL workbench keeps truncating the data sets being imported by the Table Import Wizard.
+The simplest way to load data local infile is by using MySQL Command Line to load a CSV file.
+STEP 1:        Search the command prompt on your system (windoms, linux, or mac)
+        Right click on command prompt and run as administrator (Command Prompt will pop up on your screen)
+STEP 2:        Type in this code without the bracket - (mysql -u root -p --local-infile=1). NOTE: You would have to replace 'root' with your MySQL username (this is only done if you have a different user name).
+STEP 3:        Press Enter and you'll be prompted to enter a password
+STEP 4:        After password has been successfully entered, we would have to choose the database we want to work with.
+        Type in this code without the bracket - (USE database_name). NOTE: Replace 'database_name' with the database you want to import the CSV file into
+STEP 5:        Load data local infile, to do this type in this code without the bracket (LOAD DATA LOCAL INFILE 'C:/Users/User/Documents/Victory Neebee/Data Sets/Retail Sales Analysis_01.csv' INTO TABLE retail_sales FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;) 
+It is important to note that this code should be entered as a one line statement as presented above, this is because MySQL command line does not respond well with line breaks (paragraphs) except they are written properly. So to do this with ease copy the one line statement above. 
+Also note that the pathway to your CSV dataset must be edited to the right one (the pathway above was used for my project Retail Sales Analysis), and there must be a table created aleady on MySQL workbench. This way data can easily be imported there. 
+Also ensure the CSV file you want to load local infile is not open on excel or anyother app, ensure also that the table you want to import the csv file into has been created prior to this and the table has the same number of columns as the CSV file. 
+STEP 6:        All records should be successfully uploaded into the table and its databae, and we can go ahead and check the warnings on the data set after Step 1 to Step 6 have been completed.
+      Use the code without the bracket (SHOW WARNINGS), we can also go ahead to limit the total number of warnings show. simply use the code (SHOW WARNINGS LIMIT 10)
